@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Inter', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +66,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Sybo Custom Colors
+				'sybo': {
+					'black': 'hsl(var(--sybo-black))',
+					'dark': 'hsl(var(--sybo-dark))',
+					'surface': 'hsl(var(--sybo-surface))',
+					'border': 'hsl(var(--sybo-border))',
+					'sapphire': 'hsl(var(--sybo-sapphire))',
+					'sapphire-dark': 'hsl(var(--sybo-sapphire-dark))',
+					'neon': 'hsl(var(--sybo-neon))',
+					'neon-blue': 'hsl(var(--sybo-neon-blue))',
+					'mineral': 'hsl(var(--sybo-mineral))',
+					'text': 'hsl(var(--sybo-text))',
+					'text-muted': 'hsl(var(--sybo-text-muted))',
 				}
 			},
 			borderRadius: {
@@ -89,6 +108,16 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			backgroundImage: {
+				'sybo-gradient': 'var(--sybo-gradient-primary)',
+				'sybo-dark': 'var(--sybo-gradient-dark)',
+				'sybo-neon': 'var(--sybo-gradient-neon)',
+			},
+			boxShadow: {
+				'sybo-glow': 'var(--sybo-glow-sapphire)',
+				'sybo-glow-neon': 'var(--sybo-glow-neon)',
+				'sybo-premium': 'var(--sybo-shadow-premium)',
 			}
 		}
 	},

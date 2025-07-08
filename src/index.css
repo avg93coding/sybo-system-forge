@@ -1,96 +1,53 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Premium Design System */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    /* Sybo Premium Color Palette */
+    --sybo-black: 0 0% 5%;
+    --sybo-dark: 0 0% 8%;
+    --sybo-surface: 0 0% 12%;
+    --sybo-border: 0 0% 20%;
+    --sybo-sapphire: 215 100% 50%;
+    --sybo-sapphire-dark: 215 100% 35%;
+    --sybo-neon: 120 100% 50%;
+    --sybo-neon-blue: 200 100% 60%;
+    --sybo-mineral: 45 100% 70%;
+    --sybo-text: 0 0% 95%;
+    --sybo-text-muted: 0 0% 70%;
+    --sybo-gradient-primary: linear-gradient(135deg, hsl(215, 100%, 50%) 0%, hsl(200, 100%, 60%) 100%);
+    --sybo-gradient-dark: linear-gradient(135deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 12%) 50%, hsl(0, 0%, 8%) 100%);
+    --sybo-gradient-neon: linear-gradient(90deg, hsl(120, 100%, 50%) 0%, hsl(200, 100%, 60%) 100%);
+    
+    /* Shadows and Glows */
+    --sybo-glow-sapphire: 0 0 20px hsl(215, 100%, 50%, 0.5);
+    --sybo-glow-neon: 0 0 30px hsl(120, 100%, 50%, 0.4);
+    --sybo-shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    
+    /* Updated shadcn variables for dark theme */
+    --background: var(--sybo-black);
+    --foreground: var(--sybo-text);
+    --card: var(--sybo-surface);
+    --card-foreground: var(--sybo-text);
+    --popover: var(--sybo-surface);
+    --popover-foreground: var(--sybo-text);
+    --primary: var(--sybo-sapphire);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--sybo-surface);
+    --secondary-foreground: var(--sybo-text);
+    --muted: var(--sybo-surface);
+    --muted-foreground: var(--sybo-text-muted);
+    --accent: var(--sybo-surface);
+    --accent-foreground: var(--sybo-text);
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: var(--sybo-border);
+    --input: var(--sybo-border);
+    --ring: var(--sybo-sapphire);
+    --radius: 0.75rem;
   }
 }
 
@@ -98,8 +55,188 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Inter'] antialiased;
+    background: var(--sybo-gradient-dark);
+    min-height: 100vh;
   }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+}
+
+/* Premium Typography */
+@layer components {
+  .sybo-heading {
+    @apply font-bold tracking-tight;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+  }
+  
+  .sybo-mono {
+    @apply font-mono;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .sybo-gradient-text {
+    background: var(--sybo-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .sybo-neon-text {
+    color: hsl(var(--sybo-neon));
+    text-shadow: 0 0 10px hsl(var(--sybo-neon), 0.5);
+  }
+}
+
+/* Premium Animations */
+@layer utilities {
+  .sybo-floating {
+    animation: sybo-float 6s ease-in-out infinite;
+  }
+  
+  .sybo-pulse-glow {
+    animation: sybo-pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  .sybo-slide-up {
+    animation: sybo-slide-up 0.8s ease-out forwards;
+  }
+  
+  .sybo-fade-in {
+    animation: sybo-fade-in 1s ease-out forwards;
+  }
+  
+  .sybo-scale-in {
+    animation: sybo-scale-in 0.6s ease-out forwards;
+  }
+  
+  .sybo-holographic {
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      hsl(var(--sybo-sapphire), 0.1) 50%, 
+      transparent 70%);
+    background-size: 200% 100%;
+    animation: sybo-holographic 3s linear infinite;
+  }
+  
+  .sybo-data-flow {
+    animation: sybo-data-flow 4s linear infinite;
+  }
+}
+
+@keyframes sybo-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+@keyframes sybo-pulse-glow {
+  0% { 
+    box-shadow: var(--sybo-glow-sapphire);
+    transform: scale(1);
+  }
+  100% { 
+    box-shadow: var(--sybo-glow-sapphire), 0 0 40px hsl(var(--sybo-sapphire), 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes sybo-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sybo-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sybo-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sybo-holographic {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes sybo-data-flow {
+  0% { transform: translateX(-100px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100px); opacity: 0; }
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--sybo-surface));
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, hsl(var(--sybo-sapphire)) 0%, hsl(var(--sybo-neon-blue)) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, hsl(var(--sybo-sapphire-dark)) 0%, hsl(var(--sybo-sapphire)) 100%);
+}
+
+/* Premium Glass Effect */
+.sybo-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium Button Styles */
+.sybo-btn-primary {
+  background: var(--sybo-gradient-primary);
+  border: none;
+  box-shadow: var(--sybo-glow-sapphire);
+  transition: all 0.3s ease;
+}
+
+.sybo-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sybo-glow-sapphire), var(--sybo-shadow-premium);
+}
+
+.sybo-btn-ghost {
+  background: transparent;
+  border: 1px solid hsl(var(--sybo-sapphire));
+  color: hsl(var(--sybo-sapphire));
+  transition: all 0.3s ease;
+}
+
+.sybo-btn-ghost:hover {
+  background: hsl(var(--sybo-sapphire), 0.1);
+  box-shadow: var(--sybo-glow-sapphire);
+  transform: translateY(-1px);
 }
