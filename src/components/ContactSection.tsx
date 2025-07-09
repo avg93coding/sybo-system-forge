@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -76,35 +75,35 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="sybo-section-mobile relative">
-      <div className="max-w-7xl mx-auto sybo-mobile-padding">
-        {/* Enhanced Section Header */}
+    <section id="contact" className="py-20 sm:py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Section Header */}
         <div className="text-center mb-12 sm:mb-20 sybo-fade-in">
           <div className="inline-flex items-center space-x-2 bg-sybo-surface/50 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8">
             <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-sybo-sapphire" />
             <span className="text-sybo-text-muted sybo-mono text-xs sm:text-sm">Contact Hub</span>
           </div>
           
-          <h2 className="sybo-heading-responsive font-bold sybo-heading mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold sybo-heading mb-4 sm:mb-6">
             <span className="text-sybo-text">{t('contact.title')}</span>
             <span className="sybo-gradient-text"> {t('contact.title.highlight')}</span>
           </h2>
           
-          <p className="sybo-text-responsive text-sybo-text-muted max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-sybo-text-muted max-w-3xl mx-auto px-4">
             {t('contact.description')}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-start">
-          {/* Enhanced Contact Form */}
+          {/* Contact Form */}
           <div className="sybo-scale-in">
-            <div className="sybo-glass rounded-xl sm:rounded-2xl sybo-card-mobile backdrop-blur-xl border border-sybo-border/20">
-              <h3 className="sybo-heading-responsive font-bold sybo-heading text-sybo-text mb-4 sm:mb-6">
+            <div className="sybo-glass rounded-xl sm:rounded-2xl p-6 sm:p-8 backdrop-blur-xl border border-sybo-border/20">
+              <h3 className="text-xl sm:text-2xl font-bold sybo-heading text-sybo-text mb-4 sm:mb-6">
                 Start Your Project
               </h3>
               
-              <form onSubmit={handleSubmit} className="sybo-mobile-spacing">
-                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Input
                       name="name"
@@ -112,7 +111,7 @@ export const ContactSection = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire sybo-touch-target"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                   <div>
@@ -123,19 +122,19 @@ export const ContactSection = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire sybo-touch-target"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Input
                       name="company"
                       placeholder={t('contact.form.company')}
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire sybo-touch-target"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                   <div>
@@ -144,7 +143,7 @@ export const ContactSection = () => {
                       placeholder={t('contact.form.project')}
                       value={formData.project}
                       onChange={handleInputChange}
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire sybo-touch-target"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                 </div>
@@ -164,7 +163,7 @@ export const ContactSection = () => {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="sybo-btn-primary w-full sybo-mobile-button rounded-full font-semibold group shadow-2xl hover:scale-105 transition-all duration-300"
+                  className="sybo-btn-primary w-full py-3 sm:py-4 rounded-full font-semibold group min-h-[44px]"
                 >
                   {isSubmitting ? (
                     <>
@@ -194,10 +193,10 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          {/* Enhanced Contact Methods */}
+          {/* Contact Methods */}
           <div className="space-y-6 sm:space-y-8 sybo-fade-in" style={{ animationDelay: '0.3s' }}>
             <div>
-              <h3 className="sybo-heading-responsive font-bold sybo-heading text-sybo-text mb-6">
+              <h3 className="text-2xl font-bold sybo-heading text-sybo-text mb-6">
                 Other Ways to Connect
               </h3>
               
@@ -206,10 +205,10 @@ export const ContactSection = () => {
                   <a
                     key={index}
                     href={method.action}
-                    className="block sybo-glass rounded-2xl sybo-card-mobile backdrop-blur-xl border border-sybo-border/20 hover:border-sybo-sapphire/30 transition-all duration-300 group hover:scale-105"
+                    className="block sybo-glass rounded-2xl p-6 backdrop-blur-xl border border-sybo-border/20 hover:border-sybo-sapphire/30 transition-all duration-300 group"
                   >
                     <div className="flex items-center space-x-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center sybo-touch-target ${
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                         method.color === 'sybo-sapphire' ? 'bg-sybo-sapphire/20 text-sybo-sapphire' :
                         method.color === 'sybo-neon' ? 'bg-sybo-neon/20 text-sybo-neon' :
                         'bg-sybo-mineral/20 text-sybo-mineral'
@@ -231,8 +230,8 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            {/* Enhanced Location Info */}
-            <div className="sybo-glass rounded-2xl sybo-card-mobile backdrop-blur-xl border border-sybo-border/20 hover:scale-105 transition-transform duration-300">
+            {/* Location Info */}
+            <div className="sybo-glass rounded-2xl p-6 backdrop-blur-xl border border-sybo-border/20">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-sybo-sapphire/20 rounded-xl flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-sybo-sapphire" />
@@ -252,8 +251,8 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            {/* Enhanced Response Time */}
-            <div className="sybo-glass rounded-2xl sybo-card-mobile backdrop-blur-xl border border-sybo-border/20 hover:scale-105 transition-transform duration-300">
+            {/* Response Time */}
+            <div className="sybo-glass rounded-2xl p-6 backdrop-blur-xl border border-sybo-border/20">
               <h4 className="text-sybo-text font-semibold sybo-heading mb-4">
                 What Happens Next?
               </h4>

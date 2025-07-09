@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,7 +21,7 @@
     --sybo-gradient-dark: linear-gradient(135deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 12%) 50%, hsl(0, 0%, 8%) 100%);
     --sybo-gradient-neon: linear-gradient(90deg, hsl(120, 100%, 50%) 0%, hsl(200, 100%, 60%) 100%);
     
-    /* Enhanced Shadows and Glows */
+    /* Shadows and Glows */
     --sybo-glow-sapphire: 0 0 20px hsl(215, 100%, 50%, 0.5);
     --sybo-glow-neon: 0 0 30px hsl(120, 100%, 50%, 0.4);
     --sybo-shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
@@ -68,25 +67,33 @@
     overflow-x: hidden;
   }
   
-  /* Enhanced responsive font sizes with fluid scaling */
+  /* Enhanced responsive font sizes */
   @media (max-width: 320px) {
-    html { font-size: 14px; }
+    html {
+      font-size: 14px;
+    }
   }
   
   @media (min-width: 321px) and (max-width: 480px) {
-    html { font-size: 15px; }
+    html {
+      font-size: 15px;
+    }
   }
   
   @media (min-width: 481px) and (max-width: 768px) {
-    html { font-size: 16px; }
+    html {
+      font-size: 16px;
+    }
   }
   
   @media (min-width: 769px) {
-    html { font-size: 16px; }
+    html {
+      font-size: 16px;
+    }
   }
 }
 
-/* Premium Typography with Fluid Scaling */
+/* Premium Typography */
 @layer components {
   .sybo-heading {
     @apply font-bold tracking-tight;
@@ -111,19 +118,18 @@
     text-shadow: 0 0 10px hsl(var(--sybo-neon), 0.5);
   }
   
-  /* Fluid responsive typography */
+  /* Enhanced responsive typography with clamp */
   .sybo-text-responsive {
-    font-size: clamp(0.875rem, 2.5vw, 1.25rem);
-    line-height: 1.6;
+    font-size: clamp(0.875rem, 3vw, 1.25rem);
   }
   
   .sybo-heading-responsive {
-    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 6vw, 4rem);
     line-height: 1.1;
   }
   
   .sybo-hero-title-responsive {
-    font-size: clamp(2rem, 8vw, 5rem);
+    font-size: clamp(2rem, 8vw, 6rem);
     line-height: 1.1;
   }
   
@@ -133,7 +139,7 @@
   }
 }
 
-/* Enhanced Premium Animations */
+/* Enhanced Animations */
 @layer utilities {
   .sybo-floating {
     animation: sybo-float 6s ease-in-out infinite;
@@ -168,7 +174,7 @@
     animation: sybo-data-flow 4s linear infinite;
   }
   
-  /* Enhanced mobile utilities with better touch targets */
+  /* Enhanced mobile utilities */
   .sybo-mobile-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
@@ -178,8 +184,7 @@
   }
   
   .sybo-mobile-button {
-    @apply min-h-[48px] min-w-[48px] px-6 py-3 text-base;
-    touch-action: manipulation;
+    @apply min-h-[44px] px-6 py-3 text-base;
   }
   
   .sybo-mobile-spacing {
@@ -189,16 +194,8 @@
   .sybo-card-mobile {
     @apply p-4 sm:p-6 lg:p-8;
   }
-  
-  /* Enhanced touch-friendly interaction */
-  .sybo-touch-target {
-    min-height: 48px;
-    min-width: 48px;
-    touch-action: manipulation;
-  }
 }
 
-/* Enhanced keyframe animations */
 @keyframes sybo-float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(1deg); }
@@ -277,10 +274,10 @@
   background: linear-gradient(180deg, hsl(var(--sybo-sapphire-dark)) 0%, hsl(var(--sybo-sapphire)) 100%);
 }
 
-/* Enhanced Premium Glass Effect */
+/* Premium Glass Effect */
 .sybo-glass {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -290,23 +287,6 @@
   border: none;
   box-shadow: 0 0 20px hsl(200, 100%, 50%, 0.3);
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.sybo-btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.sybo-btn-primary:hover::before {
-  left: 100%;
 }
 
 .sybo-btn-primary:hover {
@@ -342,10 +322,10 @@
     animation-duration: 8s;
   }
   
-  /* Enhanced touch targets and accessibility */
+  /* Enhanced touch targets */
   button, .sybo-btn-primary, .sybo-btn-ghost {
-    min-height: 48px;
-    min-width: 48px;
+    min-height: 44px;
+    min-width: 44px;
     touch-action: manipulation;
   }
   
@@ -378,27 +358,4 @@
     --sybo-text-muted: 0 0% 85%;
     --sybo-border: 0 0% 40%;
   }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Focus visible improvements */
-*:focus-visible {
-  outline: 2px solid hsl(var(--sybo-sapphire));
-  outline-offset: 2px;
-}
-
-/* Better text selection */
-::selection {
-  background: hsl(var(--sybo-sapphire), 0.3);
-  color: hsl(var(--sybo-text));
 }
