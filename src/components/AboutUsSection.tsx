@@ -3,11 +3,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { 
   Users, 
-  Heart, 
   ArrowRight, 
   Quote,
-  Target,
-  Zap,
   Stethoscope,
   Cog
 } from 'lucide-react';
@@ -93,43 +90,43 @@ export const AboutUsSection = () => {
   const quotes = quotesData[language];
 
   return (
-    <section id="about-us" className="py-20 sm:py-32 relative overflow-hidden">
-      {/* Background Pattern */}
+    <section id="about-us" className="sybo-section-mobile relative overflow-hidden">
+      {/* Enhanced Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-sybo-sapphire to-transparent"></div>
         <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-sybo-neon to-transparent"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto sybo-mobile-padding relative z-10">
+        {/* Enhanced Section Header */}
         <div className="text-center mb-12 sm:mb-20 sybo-fade-in">
           <div className="inline-flex items-center space-x-2 bg-sybo-surface/50 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8">
             <Users className="w-3 h-3 sm:w-4 sm:h-4 text-sybo-sapphire" />
             <span className="text-sybo-text-muted sybo-mono text-xs sm:text-sm">{t('about.tagline')}</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold sybo-heading mb-4 sm:mb-6">
+          <h2 className="sybo-heading-responsive font-bold sybo-heading mb-4 sm:mb-6">
             <span className="text-sybo-text">{t('about.title')}</span>
             <span className="sybo-gradient-text"> {t('about.title.highlight')}</span>
           </h2>
           
-          <p className="text-lg sm:text-xl text-sybo-text-muted max-w-3xl mx-auto px-4">
+          <p className="sybo-text-responsive text-sybo-text-muted max-w-3xl mx-auto">
             {t('about.description')}
           </p>
         </div>
 
-        {/* Founders Section */}
+        {/* Enhanced Founders Section */}
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-20">
           {founders.map((founder, index) => (
-            <div key={index} className="sybo-glass rounded-xl sm:rounded-2xl p-6 sm:p-8 backdrop-blur-xl border border-sybo-border/20 sybo-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
+            <div key={index} className="sybo-glass rounded-xl sm:rounded-2xl sybo-card-mobile backdrop-blur-xl border border-sybo-border/20 sybo-scale-in hover:scale-105 transition-all duration-300 group" style={{ animationDelay: `${index * 0.2}s` }}>
               <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center sybo-floating mx-auto sm:mx-0 ${
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center sybo-floating mx-auto sm:mx-0 group-hover:scale-110 transition-transform duration-300 ${
                   founder.color === 'sybo-neon' ? 'bg-sybo-neon/20 text-sybo-neon' : 'bg-sybo-sapphire/20 text-sybo-sapphire'
                 }`} style={{ animationDelay: `${index}s` }}>
                   {founder.icon}
                 </div>
                 <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold sybo-heading text-sybo-text mb-2">
+                  <h3 className="sybo-heading-responsive font-bold sybo-heading text-sybo-text mb-2">
                     {founder.name}
                   </h3>
                   <p className={`font-semibold mb-3 sm:mb-4 sybo-mono text-sm sm:text-base ${
@@ -140,7 +137,7 @@ export const AboutUsSection = () => {
                   <p className="text-sybo-text-muted text-sm sm:text-base mb-4 sm:mb-6 italic">
                     {founder.subtitle}
                   </p>
-                  <div className="text-sybo-text-muted text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed">
+                  <div className="text-sybo-text-muted sybo-text-responsive mb-4 sm:mb-6 leading-relaxed">
                     {founder.bio.split('\n\n').map((paragraph, pIndex) => (
                       <p key={pIndex} className={pIndex > 0 ? 'mt-4' : ''}>
                         {paragraph}
@@ -151,10 +148,10 @@ export const AboutUsSection = () => {
                     {founder.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex}
-                        className={`px-3 py-1 rounded-full text-xs sm:text-sm sybo-mono ${
+                        className={`px-3 py-1 rounded-full text-xs sm:text-sm sybo-mono hover:scale-105 transition-transform duration-200 ${
                           founder.color === 'sybo-neon' 
-                            ? 'bg-sybo-neon/10 text-sybo-neon' 
-                            : 'bg-sybo-sapphire/10 text-sybo-sapphire'
+                            ? 'bg-sybo-neon/10 text-sybo-neon hover:bg-sybo-neon/20' 
+                            : 'bg-sybo-sapphire/10 text-sybo-sapphire hover:bg-sybo-sapphire/20'
                         }`}
                       >
                         {tag}
@@ -167,13 +164,13 @@ export const AboutUsSection = () => {
           ))}
         </div>
 
-        {/* Quote Wall */}
+        {/* Enhanced Quote Wall */}
         <div className="sybo-fade-in">
           <div className="text-center mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold sybo-heading text-sybo-text mb-4">
+            <h3 className="sybo-heading-responsive font-bold sybo-heading text-sybo-text mb-4">
               {language === 'es' ? 'Nuestro Manifiesto' : 'Our Manifesto'}
             </h3>
-            <p className="text-sybo-text-muted">
+            <p className="text-sybo-text-muted sybo-text-responsive">
               {language === 'es' ? 'Los principios que guían cada decisión que tomamos' : 'The principles that guide every decision we make'}
             </p>
           </div>
@@ -182,11 +179,11 @@ export const AboutUsSection = () => {
             {quotes.map((quote, index) => (
               <div 
                 key={index}
-                className="sybo-glass rounded-xl sm:rounded-2xl p-6 sm:p-8 backdrop-blur-xl border border-sybo-border/20 sybo-scale-in"
+                className="sybo-glass rounded-xl sm:rounded-2xl sybo-card-mobile backdrop-blur-xl border border-sybo-border/20 sybo-scale-in hover:scale-105 transition-all duration-300 group"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-sybo-sapphire mb-4 sm:mb-6 sybo-floating" />
-                <blockquote className="text-sybo-text text-base sm:text-lg mb-4 italic">
+                <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-sybo-sapphire mb-4 sm:mb-6 sybo-floating group-hover:text-sybo-neon transition-colors duration-300" />
+                <blockquote className="text-sybo-text sybo-text-responsive mb-4 italic leading-relaxed">
                   "{quote.text}"
                 </blockquote>
                 <cite className="text-sybo-text-muted sybo-mono text-sm">
@@ -197,19 +194,19 @@ export const AboutUsSection = () => {
           </div>
         </div>
 
-        {/* CTA */}
+        {/* Enhanced CTA */}
         <div className="text-center sybo-fade-in">
           <Button 
             onClick={() => {
               const element = document.getElementById('contact');
               if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
-            className="sybo-btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold group min-h-[44px]"
+            className="sybo-btn-primary sybo-mobile-button px-8 py-4 rounded-full font-semibold group shadow-2xl hover:scale-105 transition-all duration-300"
           >
             {language === 'es' ? 'Experimenta la Manera Sybo' : 'Experience The Sybo Way'}
-            <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
