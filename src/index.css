@@ -60,11 +60,37 @@
     @apply bg-background text-foreground font-['Inter'] antialiased;
     background: var(--sybo-gradient-dark);
     min-height: 100vh;
+    overflow-x: hidden;
   }
   
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+  }
+  
+  /* Responsive font sizes */
+  @media (max-width: 320px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  @media (min-width: 321px) and (max-width: 480px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    html {
+      font-size: 16px;
+    }
   }
 }
 
@@ -91,6 +117,20 @@
   .sybo-neon-text {
     color: hsl(var(--sybo-neon));
     text-shadow: 0 0 10px hsl(var(--sybo-neon), 0.5);
+  }
+  
+  /* Responsive typography */
+  .sybo-text-responsive {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+  
+  .sybo-heading-responsive {
+    font-size: clamp(1.5rem, 6vw, 4rem);
+  }
+  
+  .sybo-hero-title-responsive {
+    font-size: clamp(2rem, 8vw, 6rem);
+    line-height: 1.1;
   }
 }
 
@@ -127,6 +167,19 @@
   
   .sybo-data-flow {
     animation: sybo-data-flow 4s linear infinite;
+  }
+  
+  /* Mobile-specific utilities */
+  .sybo-mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .sybo-mobile-text {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .sybo-mobile-button {
+    @apply min-h-[44px] px-6 py-3 text-base;
   }
 }
 
@@ -192,7 +245,7 @@
 
 /* Premium Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -201,7 +254,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, hsl(var(--sybo-sapphire)) 0%, hsl(var(--sybo-neon-blue)) 100%);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -239,4 +292,44 @@
   background: hsl(var(--sybo-sapphire), 0.1);
   box-shadow: var(--sybo-glow-sapphire);
   transform: translateY(-1px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .sybo-glass {
+    backdrop-filter: blur(8px);
+  }
+  
+  .sybo-pulse-glow {
+    animation: none; /* Reduce animations on mobile for performance */
+  }
+  
+  .sybo-floating {
+    animation-duration: 8s; /* Slower animations on mobile */
+  }
+  
+  /* Touch targets */
+  button, .sybo-btn-primary, .sybo-btn-ghost {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .sybo-floating,
+    .sybo-pulse-glow,
+    .sybo-holographic,
+    .sybo-data-flow {
+      animation: none;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --sybo-text: 0 0% 100%;
+    --sybo-text-muted: 0 0% 85%;
+    --sybo-border: 0 0% 40%;
+  }
 }

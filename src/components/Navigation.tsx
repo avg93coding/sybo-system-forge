@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +25,15 @@ export const Navigation = () => {
     }
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'sybo-glass backdrop-blur-xl' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
@@ -35,54 +41,72 @@ export const Navigation = () => {
               <span className="text-white font-bold text-xl sybo-heading">S</span>
             </div>
             <div>
-              <div className="text-sybo-text font-bold sybo-heading text-lg">Sybo AI Solution</div>
-              <div className="text-sybo-sapphire text-xs sybo-mono">AI System Booster</div>
+              <div className="text-sybo-text font-bold sybo-heading text-lg">Sybo Solution</div>
+              <div className="text-sybo-sapphire text-xs sybo-mono">{t('hero.tagline')}</div>
             </div>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300"
+              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-sm lg:text-base"
             >
-              Home
+              {t('nav.home')}
             </button>
             <button 
               onClick={() => scrollToSection('what-we-do')}
-              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300"
+              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-sm lg:text-base"
             >
-              What We Do
+              {t('nav.services')}
             </button>
             <button 
-              onClick={() => scrollToSection('sybo-way')}
-              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300"
+              onClick={() => scrollToSection('about-us')}
+              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-sm lg:text-base"
             >
-              The Sybo Way
+              {t('nav.about')}
             </button>
             <button 
               onClick={() => scrollToSection('portfolio')}
-              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300"
+              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-sm lg:text-base"
             >
-              Portfolio
+              {t('nav.portfolio')}
             </button>
+            
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-2 text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-sm"
+            >
+              <Globe className="w-4 h-4" />
+              <span>{language.toUpperCase()}</span>
+            </button>
+            
             <Button 
               onClick={() => scrollToSection('contact')}
-              className="sybo-btn-primary px-6 py-2 rounded-full"
+              className="sybo-btn-primary px-4 lg:px-6 py-2 rounded-full text-sm lg:text-base"
             >
-              Let's Build Together
+              {t('nav.cta')}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-sybo-text"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
+          <div className="md:hidden flex items-center space-x-3">
+            <button
+              onClick={toggleLanguage}
+              className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 p-2"
+            >
+              <Globe className="w-5 h-5" />
+            </button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-sybo-text"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -91,33 +115,33 @@ export const Navigation = () => {
             <div className="flex flex-col space-y-4 p-6">
               <button 
                 onClick={() => scrollToSection('hero')}
-                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left"
+                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left py-2"
               >
-                Home
+                {t('nav.home')}
               </button>
               <button 
                 onClick={() => scrollToSection('what-we-do')}
-                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left"
+                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left py-2"
               >
-                What We Do
+                {t('nav.services')}
               </button>
               <button 
-                onClick={() => scrollToSection('sybo-way')}
-                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left"
+                onClick={() => scrollToSection('about-us')}
+                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left py-2"
               >
-                The Sybo Way
+                {t('nav.about')}
               </button>
               <button 
                 onClick={() => scrollToSection('portfolio')}
-                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left"
+                className="text-sybo-text hover:text-sybo-sapphire transition-colors duration-300 text-left py-2"
               >
-                Portfolio
+                {t('nav.portfolio')}
               </button>
               <Button 
                 onClick={() => scrollToSection('contact')}
-                className="sybo-btn-primary w-full py-3 rounded-full mt-4"
+                className="sybo-btn-primary w-full py-3 rounded-full mt-4 min-h-[44px]"
               >
-                Let's Build Together
+                {t('nav.cta')}
               </Button>
             </div>
           </div>
