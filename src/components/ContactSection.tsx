@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,8 +13,10 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const ContactSection = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,6 +25,7 @@ export const ContactSection = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -39,28 +41,32 @@ export const ContactSection = () => {
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    toast.success("Message sent successfully! We'll get back to you within 24 hours.");
+    toast.success(t('contact.success'));
     setFormData({ name: '', email: '', company: '', project: '', message: '' });
+    setShowConfirmation(true);
     setIsSubmitting(false);
+    
+    // Hide confirmation after 5 seconds
+    setTimeout(() => setShowConfirmation(false), 5000);
   };
 
   const contactMethods = [
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "Email Us",
       description: "hello@sybosolution.com",
       action: "mailto:hello@sybosolution.com",
       color: "sybo-sapphire"
     },
     {
-      icon: <MessageCircle className="w-6 h-6" />,
+      icon: <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "WhatsApp",
       description: "Quick response guaranteed",
       action: "https://wa.me/1234567890",
       color: "sybo-neon"
     },
     {
-      icon: <Phone className="w-6 h-6" />,
+      icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: "Schedule Call",
       description: "30-min strategy session",
       action: "#",
@@ -69,54 +75,54 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-32 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contact" className="py-20 sm:py-32 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-20 sybo-fade-in">
-          <div className="inline-flex items-center space-x-2 bg-sybo-surface/50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-            <Zap className="w-4 h-4 text-sybo-sapphire" />
-            <span className="text-sybo-text-muted sybo-mono text-sm">Contact Hub</span>
+        <div className="text-center mb-12 sm:mb-20 sybo-fade-in">
+          <div className="inline-flex items-center space-x-2 bg-sybo-surface/50 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8">
+            <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-sybo-sapphire" />
+            <span className="text-sybo-text-muted sybo-mono text-xs sm:text-sm">Contact Hub</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold sybo-heading mb-6">
-            <span className="text-sybo-text">Let's Build</span>
-            <span className="sybo-gradient-text"> Together</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold sybo-heading mb-4 sm:mb-6">
+            <span className="text-sybo-text">{t('contact.title')}</span>
+            <span className="sybo-gradient-text"> {t('contact.title.highlight')}</span>
           </h2>
           
-          <p className="text-xl text-sybo-text-muted max-w-3xl mx-auto">
-            Your system is already thinking. We just need to bring it to life.
+          <p className="text-lg sm:text-xl text-sybo-text-muted max-w-3xl mx-auto px-4">
+            {t('contact.description')}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-start">
           {/* Contact Form */}
           <div className="sybo-scale-in">
-            <div className="sybo-glass rounded-2xl p-8 backdrop-blur-xl border border-sybo-border/20">
-              <h3 className="text-2xl font-bold sybo-heading text-sybo-text mb-6">
+            <div className="sybo-glass rounded-xl sm:rounded-2xl p-6 sm:p-8 backdrop-blur-xl border border-sybo-border/20">
+              <h3 className="text-xl sm:text-2xl font-bold sybo-heading text-sybo-text mb-4 sm:mb-6">
                 Start Your Project
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Input
                       name="name"
-                      placeholder="Your Name"
+                      placeholder={t('contact.form.name')}
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                   <div>
                     <Input
                       name="email"
                       type="email"
-                      placeholder="Email Address"
+                      placeholder={t('contact.form.email')}
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                 </div>
@@ -125,19 +131,19 @@ export const ContactSection = () => {
                   <div>
                     <Input
                       name="company"
-                      placeholder="Company Name"
+                      placeholder={t('contact.form.company')}
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                   <div>
                     <Input
                       name="project"
-                      placeholder="Project Type"
+                      placeholder={t('contact.form.project')}
                       value={formData.project}
                       onChange={handleInputChange}
-                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire"
+                      className="bg-sybo-surface/50 border-sybo-border/30 text-sybo-text placeholder:text-sybo-text-muted focus:border-sybo-sapphire min-h-[44px]"
                     />
                   </div>
                 </div>
@@ -145,7 +151,7 @@ export const ContactSection = () => {
                 <div>
                   <Textarea
                     name="message"
-                    placeholder="Tell us about your vision, challenges, and what you want to automate..."
+                    placeholder={t('contact.form.message')}
                     value={formData.message}
                     onChange={handleInputChange}
                     required
@@ -157,7 +163,7 @@ export const ContactSection = () => {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="sybo-btn-primary w-full py-4 rounded-full font-semibold group"
+                  className="sybo-btn-primary w-full py-3 sm:py-4 rounded-full font-semibold group min-h-[44px]"
                 >
                   {isSubmitting ? (
                     <>
@@ -166,27 +172,29 @@ export const ContactSection = () => {
                     </>
                   ) : (
                     <>
-                      Send Message
+                      {t('contact.form.submit')}
                       <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </Button>
               </form>
 
-              {/* Confirmation Message */}
-              <div className="mt-6 p-4 bg-sybo-neon/10 border border-sybo-neon/20 rounded-xl">
-                <div className="flex items-center space-x-2 text-sybo-neon">
-                  <CheckCircle2 className="w-5 h-5" />
-                  <span className="sybo-mono text-sm">
-                    We got your message. Your system is already thinking.
-                  </span>
+              {/* Enhanced Confirmation Message */}
+              {showConfirmation && (
+                <div className="mt-6 p-4 sm:p-6 bg-sybo-neon/10 border border-sybo-neon/20 rounded-xl sybo-fade-in">
+                  <div className="flex items-center space-x-3 text-sybo-neon">
+                    <CheckCircle2 className="w-5 h-5 sybo-floating" />
+                    <span className="sybo-mono text-sm">
+                      {t('contact.confirmation')}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
           {/* Contact Methods */}
-          <div className="space-y-8 sybo-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="space-y-6 sm:space-y-8 sybo-fade-in" style={{ animationDelay: '0.3s' }}>
             <div>
               <h3 className="text-2xl font-bold sybo-heading text-sybo-text mb-6">
                 Other Ways to Connect

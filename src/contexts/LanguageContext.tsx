@@ -32,6 +32,15 @@ const translations = {
     'services.title': 'Lo Que',
     'services.title.highlight': 'Construimos',
     'services.description': 'Cada solución es un micro-ecosistema diseñado para transformar cómo trabajas, piensas y tomas decisiones en tu industria.',
+    'services.automation.title': 'Automatizaciones con n8n + Python',
+    'services.automation.description': 'Transforma flujos de trabajo manuales en sistemas inteligentes que funcionan 24/7.',
+    'services.dashboards.title': 'Dashboards con R, Shiny, Python',
+    'services.dashboards.description': 'Plataformas de visualización interactiva que convierten datos complejos en insights accionables.',
+    'services.clinical.title': 'IA para Investigación Clínica',
+    'services.clinical.description': 'Plataformas de síntesis de evidencia y meta-análisis que aceleran avances en investigación médica.',
+    'services.bidding.title': 'Sistemas Inteligentes de Licitación para Petróleo y Gas',
+    'services.bidding.description': 'Simulaciones Monte Carlo y modelos predictivos para toma de decisiones estratégicas en sectores energéticos.',
+    'services.get.solution': 'Obtener Esta Solución',
     
     // About Us
     'about.tagline': 'Nuestra Filosofía',
@@ -42,12 +51,15 @@ const translations = {
     // Contact
     'contact.title': 'Construyamos',
     'contact.title.highlight': 'Juntos',
-    'contact.description': 'Listo para transformar tu flujo de trabajo? Hablemos sobre tu próximo sistema inteligente.',
-    'contact.form.name': 'Nombre',
-    'contact.form.email': 'Email',
-    'contact.form.company': 'Empresa',
-    'contact.form.message': 'Mensaje',
+    'contact.description': 'Tu sistema ya está pensando. Solo necesitamos darle vida.',
+    'contact.form.name': 'Tu Nombre',
+    'contact.form.email': 'Correo Electrónico',
+    'contact.form.company': 'Nombre de la Empresa',
+    'contact.form.project': 'Tipo de Proyecto',
+    'contact.form.message': 'Cuéntanos sobre tu visión, desafíos y qué quieres automatizar...',
     'contact.form.submit': 'Enviar Mensaje',
+    'contact.success': '¡Mensaje enviado! Te responderemos en 24 horas.',
+    'contact.confirmation': 'Recibimos tu mensaje. Tu sistema ya está pensando.',
     
     // Footer
     'footer.tagline': 'AI System Booster',
@@ -78,6 +90,15 @@ const translations = {
     'services.title': 'What We',
     'services.title.highlight': 'Build',
     'services.description': 'Each solution is a micro-ecosystem designed to transform how you work, think, and make decisions in your industry.',
+    'services.automation.title': 'Automations with n8n + Python',
+    'services.automation.description': 'Transform manual workflows into intelligent, self-executing systems that work 24/7.',
+    'services.dashboards.title': 'Dashboards with R, Shiny, Python',
+    'services.dashboards.description': 'Interactive data visualization platforms that turn complex data into actionable insights.',
+    'services.clinical.title': 'AI for Clinical Research',
+    'services.clinical.description': 'Evidence synthesis and meta-analysis platforms that accelerate medical research breakthroughs.',
+    'services.bidding.title': 'Intelligent Bidding Systems for Oil & Gas',
+    'services.bidding.description': 'Monte Carlo simulations and predictive models for strategic decision-making in energy sectors.',
+    'services.get.solution': 'Get This Solution',
     
     // About Us
     'about.tagline': 'Our Philosophy',
@@ -88,12 +109,15 @@ const translations = {
     // Contact
     'contact.title': "Let's Build",
     'contact.title.highlight': 'Together',
-    'contact.description': 'Ready to transform your workflow? Let\'s talk about your next intelligent system.',
-    'contact.form.name': 'Name',
-    'contact.form.email': 'Email',
-    'contact.form.company': 'Company',
-    'contact.form.message': 'Message',
+    'contact.description': 'Your system is already thinking. We just need to bring it to life.',
+    'contact.form.name': 'Your Name',
+    'contact.form.email': 'Email Address',
+    'contact.form.company': 'Company Name',
+    'contact.form.project': 'Project Type',
+    'contact.form.message': 'Tell us about your vision, challenges, and what you want to automate...',
     'contact.form.submit': 'Send Message',
+    'contact.success': 'Message sent successfully! We\'ll get back to you within 24 hours.',
+    'contact.confirmation': 'We got your message. Your system is already thinking.',
     
     // Footer
     'footer.tagline': 'AI System Booster',
