@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'es' | 'en';
@@ -67,6 +66,20 @@ const translations = {
     'footer.links': 'Enlaces',
     'footer.contact': 'Contacto',
     'footer.copyright': '© 2025 Sybo Solution. Todos los derechos reservados.',
+    
+    common: {
+      useCase: "Caso de Uso",
+      keyFeatures: "Características Clave",
+      impact: "Impacto",
+      seeMore: "Ver más",
+      contact: "Contacto",
+      send: "Enviar",
+      name: "Nombre",
+      email: "Email",
+      message: "Mensaje",
+      phone: "Teléfono",
+      company: "Empresa"
+    }
   },
   en: {
     // Navigation
@@ -125,6 +138,20 @@ const translations = {
     'footer.links': 'Links',
     'footer.contact': 'Contact',
     'footer.copyright': '© 2025 Sybo Solution. All rights reserved.',
+    
+    common: {
+      useCase: "Use Case",
+      keyFeatures: "Key Features", 
+      impact: "Impact",
+      seeMore: "See more",
+      contact: "Contact",
+      send: "Send",
+      name: "Name",
+      email: "Email",
+      message: "Message",
+      phone: "Phone",
+      company: "Company"
+    }
   }
 };
 
