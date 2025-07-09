@@ -11,13 +11,7 @@ import {
   Database, 
   Brain,
   Zap,
-  X,
-  ChevronDown,
-  ChevronUp,
-  AlertTriangle,
-  TrendingUp,
-  Clock,
-  CheckCircle
+  X
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -29,18 +23,11 @@ interface ServiceDetail {
   color: string;
   features: string[];
   benefits: string[];
-  useCase: {
-    title: string;
-    description: string;
-    features: string[];
-    impact: string;
-  };
 }
 
 export const WhatWeDoSection = () => {
   const [activeService, setActiveService] = useState(0);
   const [expandedModal, setExpandedModal] = useState<number | null>(null);
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const { t } = useLanguage();
 
   const services: ServiceDetail[] = [
@@ -60,17 +47,7 @@ export const WhatWeDoSection = () => {
         "Reduce manual work by 90%",
         "24/7 automated operations",
         "Error-free execution"
-      ],
-      useCase: {
-        title: "Workflow for Medical Authorizations",
-        description: "n8n-based workflow that receives medical authorization requests, validates data, and automatically replies with status.",
-        features: [
-          "Instant response to patients",
-          "Auto-logging in Google Sheets",
-          "Dashboard with metrics (average response time, bottlenecks)"
-        ],
-        impact: "90% less delay and 60% fewer unanswered emails"
-      }
+      ]
     },
     {
       title: t('services.dashboards.title'),
@@ -88,17 +65,7 @@ export const WhatWeDoSection = () => {
         "Make data-driven decisions faster",
         "Interactive exploration tools",
         "Beautiful, clear visualizations"
-      ],
-      useCase: {
-        title: "Quality Monitoring Dashboard",
-        description: "Real-time dashboard for clinics integrating data from multiple sources (Excel, HIS, forms) to track quality indicators like readmission rates, protocol adherence, and average waiting time.",
-        features: [
-          "Auto-alerts when an indicator exceeds threshold",
-          "Comparison between clinic sites",
-          "Monthly PDF reports generated automatically"
-        ],
-        impact: "30% improvement in reaction time to red flags"
-      }
+      ]
     },
     {
       title: t('services.clinical.title'),
@@ -116,17 +83,7 @@ export const WhatWeDoSection = () => {
         "Accelerate research by 70%",
         "Evidence-based insights",
         "Streamlined workflows"
-      ],
-      useCase: {
-        title: "Predictive Maintenance for Pumps",
-        description: "Predictive model built from historical sensor data (temperature, pressure, vibration) to forecast pump failures in advance.",
-        features: [
-          "Power BI dashboard with critical status",
-          "Visual traffic light indicators",
-          "Auto-alerts to maintenance lead by email/WhatsApp"
-        ],
-        impact: "40% fewer unexpected failures and 20% cost reduction"
-      }
+      ]
     },
     {
       title: t('services.bidding.title'),
@@ -144,17 +101,7 @@ export const WhatWeDoSection = () => {
         "Optimize bidding strategies",
         "Risk-informed decisions",
         "Strategic competitive advantage"
-      ],
-      useCase: {
-        title: "Advanced Analytics Platform",
-        description: "Comprehensive business intelligence system integrating multiple data sources for strategic decision-making and risk assessment.",
-        features: [
-          "Real-time KPI monitoring",
-          "Predictive risk modeling",
-          "Automated reporting workflows"
-        ],
-        impact: "50% faster decision-making and 35% risk reduction"
-      }
+      ]
     }
   ];
 
@@ -166,10 +113,6 @@ export const WhatWeDoSection = () => {
   const closeModal = () => {
     setExpandedModal(null);
     document.body.style.overflow = 'unset';
-  };
-
-  const toggleCardExpansion = (index: number) => {
-    setExpandedCard(expandedCard === index ? null : index);
   };
 
   return (
@@ -197,98 +140,38 @@ export const WhatWeDoSection = () => {
           {/* Service Selection */}
           <div className="space-y-4 sm:space-y-6">
             {services.map((service, index) => (
-              <div key={index}>
-                <div 
-                  className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer transition-all duration-500 border transform hover:scale-105 ${
-                    activeService === index 
-                      ? 'sybo-glass border-sybo-sapphire/50 sybo-pulse-glow' 
-                      : 'bg-sybo-surface/30 border-sybo-border/20 hover:bg-sybo-surface/50'
-                  }`}
-                  onClick={() => {
-                    setActiveService(index);
-                    toggleCardExpansion(index);
-                  }}
-                >
-                  <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center sybo-floating ${
-                      service.color === 'sybo-neon' ? 'bg-sybo-neon/20 text-sybo-neon' :
-                      service.color === 'sybo-sapphire' ? 'bg-sybo-sapphire/20 text-sybo-sapphire' :
-                      'bg-sybo-mineral/20 text-sybo-mineral'
-                    }`}>
-                      {service.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-sybo-text font-semibold text-base sm:text-lg mb-2 sybo-heading">
-                        {service.title}
-                      </h3>
-                      <p className="text-sybo-text-muted text-sm">
-                        {service.description}
-                      </p>
-                    </div>
-                    {expandedCard === index ? (
-                      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-sybo-sapphire transition-transform duration-300" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-sybo-text-muted transition-transform duration-300" />
-                    )}
+              <div 
+                key={index}
+                className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer transition-all duration-500 border transform hover:scale-105 ${
+                  activeService === index 
+                    ? 'sybo-glass border-sybo-sapphire/50 sybo-pulse-glow' 
+                    : 'bg-sybo-surface/30 border-sybo-border/20 hover:bg-sybo-surface/50'
+                }`}
+                onClick={() => {
+                  setActiveService(index);
+                  openModal(index);
+                }}
+              >
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center sybo-floating ${
+                    service.color === 'sybo-neon' ? 'bg-sybo-neon/20 text-sybo-neon' :
+                    service.color === 'sybo-sapphire' ? 'bg-sybo-sapphire/20 text-sybo-sapphire' :
+                    'bg-sybo-mineral/20 text-sybo-mineral'
+                  }`}>
+                    {service.icon}
                   </div>
-                </div>
-
-                {/* Expanded Use Case Panel */}
-                {expandedCard === index && (
-                  <div className="mt-4 sybo-glass rounded-xl p-6 border border-sybo-border/20 sybo-scale-in">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                        service.color === 'sybo-neon' ? 'bg-sybo-neon/20 text-sybo-neon' :
-                        service.color === 'sybo-sapphire' ? 'bg-sybo-sapphire/20 text-sybo-sapphire' :
-                        'bg-sybo-mineral/20 text-sybo-mineral'
-                      }`}>
-                        <Brain className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-sybo-text font-semibold sybo-mono text-sm">
-                        {t('common.useCase')}: {service.useCase.title}
-                      </h4>
-                    </div>
-
-                    <p className="text-sybo-text-muted text-sm mb-4 leading-relaxed">
-                      {service.useCase.description}
+                  <div className="flex-1">
+                    <h3 className="text-sybo-text font-semibold text-base sm:text-lg mb-2 sybo-heading">
+                      {service.title}
+                    </h3>
+                    <p className="text-sybo-text-muted text-sm">
+                      {service.description}
                     </p>
-
-                    <div className="space-y-3 mb-4">
-                      <h5 className="text-sybo-text font-medium text-xs sybo-mono uppercase tracking-wider">
-                        {t('common.keyFeatures')}:
-                      </h5>
-                      <div className="space-y-2">
-                        {service.useCase.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center space-x-3">
-                            <CheckCircle className="w-3 h-3 text-sybo-neon flex-shrink-0" />
-                            <span className="text-sybo-text-muted text-xs">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-sybo-border/10">
-                      <div className="flex items-center space-x-2">
-                        <TrendingUp className="w-4 h-4 text-sybo-mineral" />
-                        <span className="text-sybo-text font-medium text-sm">
-                          {t('common.impact')}: {service.useCase.impact}
-                        </span>
-                      </div>
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openModal(index);
-                        }}
-                        className="text-sybo-sapphire hover:text-sybo-neon transition-colors text-xs"
-                      >
-                        {t('common.seeMore')}
-                        <ArrowRight className="ml-1 w-3 h-3" />
-                      </Button>
-                    </div>
                   </div>
-                )}
+                  <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
+                    activeService === index ? 'text-sybo-sapphire rotate-90' : 'text-sybo-text-muted'
+                  }`} />
+                </div>
               </div>
             ))}
           </div>
